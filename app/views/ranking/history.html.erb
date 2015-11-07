@@ -1,0 +1,46 @@
+<h1>ニコニコ動画ランキング</h1>
+
+<ul class="nav nav-tabs">
+    <li role="presentation" <%= 'class=active' if params[:cate] == "all" %>><a href="all">全て</a></li>
+    <li role="presentation" class="dropdown <%= 'active' if params[:cate] == "ent" or params[:cate] == "music" or params[:cate] == "sing" or params[:cate] == "play" or params[:cate] == "dance" or params[:cate] == "vocaloid" or params[:cate] == "nicoindies" %>">
+        <a class="dropdown-toggle" data-toggle="dropdown" href="#" aria-haspopup="true" aria-expanded="false">
+            エンタメ・音楽<span class="caret"></span>
+        </a>
+        <ul class="dropdown-menu">
+            <li><a href="ent">エンターテイメント</a></li>
+            <li><a href="music">音楽</a></li>
+            <li><a href="sing">歌ってみた</a></li>
+            <li><a href="play">演奏してみた</a></li>
+            <li><a href="dance">踊ってみた</a></li>
+            <li><a href="vocaloid">VOCALOID</a></li>
+            <li><a href="nicoindies">ニコニコインディーズ</a></li>
+        </ul>
+    </li>
+</ul>
+
+<table class="table table-hover">
+    <thead>
+        <tr><th>順位</th><th colspan="2">タイトル</th><th>コメント</th><th>再生数</th></tr>
+    </thead>
+    <tbody>
+        <% i = 0 %>
+        <% @products.each do |item| %>
+        <% i += 1%>
+        <tr>
+            <% if i < 4 %>
+                <td><h1><span class="label label-warning"><%= i %>位</span></h1></td>
+            <% elsif i < 11 %>
+                <td><h2><span class="label label-info"><%= i %>位</span></h2></td>
+            <% elsif i < 51 %>
+                <td><h3><span class="label label-success"><%= i %>位</span></h3></td>
+            <% else %>
+                <td><h4><span class="label label-default"><%= i %>位</span></h4></td>
+            <% end %>
+            <td><a href="http://www.nicovideo.jp<%= item["link"] %>" target="_blank"><img src="<%= item["img"] %>" width="160"></a></td>
+            <td><a href="http://www.nicovideo.jp<%= item["link"] %>" target="_blank"><%= item["title"] %></a><br /><%= item["date"] %></td>
+            <td><%= item["comment"] %></td>
+            <td><%= item["view"] %></td>
+        </tr>
+        <% end %>
+    </tbody>
+</table>
