@@ -11,3 +11,10 @@
 /log/*
 !/log/.keep
 /tmp
+
+# Ignore bundler
+/Gemfile.lock
+/vendor/*
+
+# Ignore DB seeds
+/db/seeds.rb
