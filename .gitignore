@@ -18,3 +18,4 @@
 
 # Ignore DB seeds
 /db/seeds.rb
+/config/database.yml
