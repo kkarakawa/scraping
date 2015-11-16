@@ -90,7 +90,7 @@
         <% i = 0 %>
         <% @products.each do |item| %>
         <% i += 1%>
-        <tr>
+        <tr onclick="window.open('http://www.nicovideo.jp<%= item["link"]%>', '_blank');" style="cursor: pointer;">
             <% if i < 4 %>
                 <td><h1><span class="label label-warning"><%= i %>位</span></h1></td>
             <% elsif i < 11 %>
@@ -100,8 +100,8 @@
             <% else %>
                 <td><h4><span class="label label-default"><%= i %>位</span></h4></td>
             <% end %>
-            <td><a href="http://www.nicovideo.jp<%= item["link"] %>" target="_blank"><img src="<%= item["img"] %>" width="160"></a></td>
-            <td><a href="http://www.nicovideo.jp<%= item["link"] %>" target="_blank"><%= item["title"] %></a><br /><%= item["date"] %></td>
+            <td><img src="<%= item["img"] %>" width="160"></td>
+            <td><span class="text-info"><%= item["title"] %></span><br /><%= item["date"] %></td>
             <td><%= item["comment"] %></td>
             <td><%= item["view"] %></td>
         </tr>
