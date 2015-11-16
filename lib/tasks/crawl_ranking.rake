@@ -2,7 +2,7 @@ namespace :crawl_ranking do
 
     desc "Rankingから動画をcrawl"
     task :create => :environment do
-        category = ['ent', 'music', 'sing', 'play', 'dance', 'vocaloid', 'nicoindies', 'animal', 'cooking', 'nature', 'travel', 'sport', 'lecture', 'drive', 'history', 'g_politics', 'science', 'tech', 'handcraft', 'make', 'anime', 'game', 'toho', 'imas', 'radio', 'draw', 'are', 'diary', 'other']
+        category = ['g_ent2', 'ent', 'music', 'sing', 'play', 'dance', 'vocaloid', 'nicoindies', 'g_life2', 'animal', 'cooking', 'nature', 'travel', 'sport', 'lecture', 'drive', 'history', 'g_politics', 'g_tech', 'science', 'tech', 'handcraft', 'make', 'g_culture2', 'anime', 'game', 'toho', 'imas', 'radio', 'draw', 'g_other', 'are', 'diary', 'other']
         category.each do |cate|
             Anemone.crawl("http://www.nicovideo.jp/ranking/fav/hourly/"+cate, {depth_limit: 0} ) do |anemone|
                 anemone.on_every_page do |page|
@@ -15,8 +15,8 @@ namespace :crawl_ranking do
                         comment = node.xpath("./div[@class='itemContent']/div[@class='itemData']//li[contains(@class,'comment')]/span").text.delete(',').to_i
                         mylist = node.xpath("./div[@class='itemContent']/div[@class='itemData']//li[contains(@class,'mylist')]/span").text.delete(',').to_i
 
-                        video = Video.where(:url => link)
-                        if video.count > 0
+                        video = Video.where(:url => link).first
+                        if !video.nil?
                             video[:view] = viewCount
                             video[:comment] = comment
                             video[:mylist] = mylist
@@ -28,10 +28,5 @@ namespace :crawl_ranking do
                 end
             end
         end
-    end
-
-    desc "crawlされた動画を追跡解析"
-    task :update => :environment do
-
     end
 end
