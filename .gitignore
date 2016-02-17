@@ -13,7 +13,6 @@
 /tmp
 
 # Ignore bundler
-/Gemfile.lock
 /vendor/*
 
 # Ignore DB seeds

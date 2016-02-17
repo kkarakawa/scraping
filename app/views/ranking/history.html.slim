@@ -4,116 +4,16 @@ ul.nav.nav-tabs
   li role="presentation" class="#{"active" if params[:cate] == "all"}"
     a href="/ranking/history/all" 全て
 
-  li.dropdown role="presentation" class="#{"active" if ["g_ent2", "ent", "music", "sing", "play", "dance", "vocaloid", "nicoindies"].include?(params[:cate])}"
-    a.dropdown-toggle data-toggle="dropdown" href="#" aria-haspopup="true" aria-expanded="false"
-      | エンタメ・音楽
-      span.caret
+  - YAML.load_file("#{Rails.root}/config/config.yml")[:nico_cate].each do |title, content|
+    li.dropdown role="presentation" class="#{"active" if content.values.include?(params[:cate])}"
+      a.dropdown-toggle data-toggle="dropdown" href="#" aria-haspopup="true" aria-expanded="false"
+        | #{title}
+        span.caret
 
-    ul.dropdown-menu
-      li class="#{"active" if params[:cate] == "g_ent2"}"
-        a href="/ranking/history/g_ent2" 合算
-      li class="#{"active" if params[:cate] == "ent"}"
-        a href="/ranking/history/ent" エンターテイメント
-      li class="#{"active" if params[:cate] == "music"}"
-        a href="/ranking/history/music" 音楽
-      li class="#{"active" if params[:cate] == "sing"}"
-        a href="/ranking/history/sing" 歌ってみた
-      li class="#{"active" if params[:cate] == "play"}"
-        a href="/ranking/history/play" 演奏してみた
-      li class="#{"active" if params[:cate] == "dance"}"
-        a href="/ranking/history/dance" 踊ってみた
-      li class="#{"active" if params[:cate] == "vocaloid"}"
-        a href="/ranking/history/vocaloid" VOCALOID
-      li class="#{"active" if params[:cate] == "nicoindies"}"
-        a href="/ranking/history/nicoindies" ニコニコインディーズ
-
-  li.dropdown role="presentation" class="#{"active" if ["g_life2", "animal", "cooking", "nature", "travel", "sport", "lecture", "drive", "history"].include?(params[:cate])}"
-
-    a.dropdown-toggle data-toggle="dropdown" href="#" aria-haspopup="true" aria-expanded="false"
-      | 生活・一般・スポ
-      span.caret
-
-    ul.dropdown-menu
-      li class="#{"active" if params[:cate] == "g_life2"}"
-        a href="/ranking/history/g_life2" 合算
-      li class="#{"active" if params[:cate] == "animal"}"
-        a href="/ranking/history/animal" 動物
-      li class="#{"active" if params[:cate] == "cooking"}"
-        a href="/ranking/history/cooking" 料理
-      li class="#{"active" if params[:cate] == "nature"}"
-        a href="/ranking/history/nature" 自然
-      li class="#{"active" if params[:cate] == "travel"}"
-        a href="/ranking/history/travel" 旅行
-      li class="#{"active" if params[:cate] == "sport"}"
-        a href="/ranking/history/sport" スポーツ
-      li class="#{"active" if params[:cate] == "lecture"}"
-        a href="/ranking/history/lecture" ニコニコ動画講座
-      li class="#{"active" if params[:cate] == "drive"}"
-        a href="/ranking/history/drive" 車載動画
-      li class="#{"active" if params[:cate] == "history"}"
-        a href="/ranking/history/history" 歴史
-
-  li.dropdown role="presentation" class="#{"active" if params[:cate] == "g_politics"}"
-    a.dropdown-toggle data-toggle="dropdown" href="#" aria-haspopup="true" aira-expanded="false"
-      | 政治
-      span.caret
-
-    ul.dropdown-menu
-      li class="#{"active" if params[:cate] == "g_politics"}"
-        a href="/ranking/history/g_politics" 合算
-
-  li.dropdown role="presentation" class="#{"active" if ["g_tech", "science", "tech", "handcraft", "make"].include?(params[:cate])}"
-    a.dropdown-toggle data-toggle="dropdown" href="#" aria-haspopup="true" aira-expanded="false"
-      | 科学・技術
-      span.caret
-
-    ul.dropdown-menu
-      li class="#{"active" if params[:cate] == "g_tech"}"
-        a href="/ranking/history/g_tech" 合算
-      li class="#{"active" if params[:cate] == "science"}"
-        a href="/ranking/history/science" 科学
-      li class="#{"active" if params[:cate] == "tech"}"
-        a href="/ranking/history/tech" ニコニコ技術部
-      li class="#{"active" if params[:cate] == "handcraft"}"
-        a href="/ranking/history/handcraft" ニコニコ手芸部
-      li class="#{"active" if params[:cate] == "make"}"
-        a href="/ranking/history/make" 作ってみた
-
-  li.dropdown role="presentation" class="#{"active" if ["g_culture2", "anime", "game", "toho", "imas", "radio", "draw"].include?(params[:cate])}"
-    a.dropdown-toggle data-toggle="dropdown" href="#" aria-haspopup="true" aira-expanded="false"
-      | アニメ・ゲーム・絵
-      span.caret
-
-    ul.dropdown-menu
-      li class="#{"active" if params[:cate] == "g_culture2"}"
-        a href="/ranking/history/g_culture2" 合算
-      li class="#{"active" if params[:cate] == "anime"}"
-        a href="/ranking/history/anime" アニメ
-      li class="#{"active" if params[:cate] == "game"}"
-        a href="/ranking/history/game" ゲーム
-      li class="#{"active" if params[:cate] == "toho"}"
-        a href="/ranking/history/toho" 東方
-      li class="#{"active" if params[:cate] == "imas"}"
-        a href="/ranking/history/imas" アイドルマスター
-      li class="#{"active" if params[:cate] == "radio"}"
-        a href="/ranking/history/radio" ラジオ
-      li class="#{"active" if params[:cate] == "draw"}"
-        a href="/ranking/history/draw" 描いてみた
-
-  li.dropdown role="presentation" class="#{"active" if ["g_other", "are", "diary", "other"].include?(params[:cate])}" 
-    a.dropdown-toggle data-toggle="dropdown" href="#" aria-haspopup="true" aira-expanded="false"
-      | その他
-      span.caret
-
-    ul.dropdown-menu
-      li class="#{"active" if params[:cate] == "g_other"}"
-        a href="/ranking/history/g_other" 合算
-      li class="#{"active" if params[:cate] == "are"}"
-        a href="/ranking/history/are" 例のアレ
-      li class="#{"active" if params[:cate] == "diary"}"
-        a href="/ranking/history/diary" 日記
-      li class="#{"active" if params[:cate] == "other"}"
-        a href="/ranking/history/other" その他
+      ul.dropdown-menu
+        - content.each do |name, url|
+          li class="#{"active" if params[:cate] == url}"
+            a href="/ranking/history/#{url}" #{name}
 
   table.table.table-hover
     thead
@@ -124,8 +24,8 @@ ul.nav.nav-tabs
         th 再生数
 
     tbody
-      - @products.each.with_index(1) do |item, idx|
-        tr onclick="window.open('http://www.nicovideo.jp#{item[:link]}', '_blank');" style="cursor: pointer;"
+      - @video.each.with_index(1) do |item, idx|
+        tr onclick="window.open('#{YAML.load_file("#{Rails.root}/config/config.yml")[:nico_url]}#{item[:url]}', '_blank');" style="cursor: pointer;"
           - if idx < 4
             td
               h1
@@ -143,12 +43,12 @@ ul.nav.nav-tabs
               h4
                 span.label.label-default #{idx}位
           td
-            img src="#{item[:img]}" width="160"
+            img src="#{item[:image]}" width="160"
           td
             span.text-info #{item[:title]}
             br
-            = item[:date]
+            = item[:created_at].strftime('%Y年%m月%d日 %H時%M分%S秒')
           td
-            = item[:comment]
+            = item[:comment].to_s.gsub(/(\d)(?=(\d{3})+(?!\d))/, '\1,')
           td
-            = item[:view]
+            = item[:view].to_s.gsub(/(\d)(?=(\d{3})+(?!\d))/, '\1,')

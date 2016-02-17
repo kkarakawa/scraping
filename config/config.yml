@@ -1,0 +1,43 @@
+:nico_url: http://www.nicovideo.jp
+:nico_crawl: http://www.nicovideo.jp/ranking/fav/hourly/
+:nico_cate:
+ エンタメ・音楽:
+  合算: g_ent2
+  エンターテイメント: ent
+  音楽: music
+  歌ってみた: sing
+  演奏してみた: play
+  踊ってみた: dance
+  VOCALOID: vocaloid
+  ニコニコインディーズ: nicoindies
+ 生活・一般・スポ:
+  合算: g_life2
+  動物: animal
+  料理: cooking
+  自然: nature
+  旅行: travel
+  スポーツ: sport
+  ニコニコ動画講座: lecture
+  車載動画: drive
+  歴史: history
+ 政治:
+  合算: g_politics
+ 科学・技術:
+  合算: g_tech
+  科学: science
+  ニコニコ技術部: tech
+  ニコニコ手芸部: handcraft
+  作ってみた: make
+ アニメ・ゲーム・絵:
+  合算: g_culture2
+  アニメ: anime
+  ゲーム: game
+  東方: toho
+  アイドルマスター: imas
+  ラジオ: radio
+  描いてみた: draw
+ その他:
+  合算: g_other
+  例のアレ: are
+  日記: diary
+  その他: other
